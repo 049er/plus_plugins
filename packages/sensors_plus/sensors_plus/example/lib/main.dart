@@ -53,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final accelerometer =
         _accelerometerValues?.map((double v) => v.toStringAsFixed(1)).toList();
+
     final gyroscope =
         _gyroscopeValues?.map((double v) => v.toStringAsFixed(1)).toList();
     final userAccelerometer = _userAccelerometerValues
@@ -89,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text('Accelerometer: $accelerometer'),
+                Text('Accelerometer: $accelerometer '),
               ],
             ),
           ),
@@ -140,7 +141,12 @@ class _MyHomePageState extends State<MyHomePage> {
       accelerometerEvents.listen(
         (AccelerometerEvent event) {
           setState(() {
-            _accelerometerValues = <double>[event.x, event.y, event.z];
+            _accelerometerValues = <double>[
+              event.x,
+              event.y,
+              event.z,
+              event.timestamp,
+            ];
           });
         },
       ),
@@ -149,7 +155,12 @@ class _MyHomePageState extends State<MyHomePage> {
       gyroscopeEvents.listen(
         (GyroscopeEvent event) {
           setState(() {
-            _gyroscopeValues = <double>[event.x, event.y, event.z];
+            _gyroscopeValues = <double>[
+              event.x,
+              event.y,
+              event.z,
+              event.timestamp,
+            ];
           });
         },
       ),
@@ -158,7 +169,12 @@ class _MyHomePageState extends State<MyHomePage> {
       userAccelerometerEvents.listen(
         (UserAccelerometerEvent event) {
           setState(() {
-            _userAccelerometerValues = <double>[event.x, event.y, event.z];
+            _userAccelerometerValues = <double>[
+              event.x,
+              event.y,
+              event.z,
+              event.timestamp,
+            ];
           });
         },
       ),
@@ -167,7 +183,12 @@ class _MyHomePageState extends State<MyHomePage> {
       magnetometerEvents.listen(
         (MagnetometerEvent event) {
           setState(() {
-            _magnetometerValues = <double>[event.x, event.y, event.z];
+            _magnetometerValues = <double>[
+              event.x,
+              event.y,
+              event.z,
+              event.timestamp,
+            ];
           });
         },
       ),
