@@ -18,6 +18,7 @@ class MagnetometerEvent {
   /// microteslas ***μT***.
   final double x, y, z;
 
+  ///The time in nanoseconds at which the event happened.
   final double timestamp;
 
   @override

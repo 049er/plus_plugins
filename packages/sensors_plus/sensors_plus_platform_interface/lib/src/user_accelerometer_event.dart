@@ -29,6 +29,7 @@ class UserAccelerometerEvent {
   /// towards the user and negative mean it is moving away from them.
   final double z;
 
+  ///The time in nanoseconds at which the event happened.
   final double timestamp;
 
   @override

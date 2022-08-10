@@ -56,9 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final gyroscope =
         _gyroscopeValues?.map((double v) => v.toStringAsFixed(1)).toList();
+
     final userAccelerometer = _userAccelerometerValues
         ?.map((double v) => v.toStringAsFixed(1))
         .toList();
+
     final magnetometer =
         _magnetometerValues?.map((double v) => v.toStringAsFixed(1)).toList();
 
