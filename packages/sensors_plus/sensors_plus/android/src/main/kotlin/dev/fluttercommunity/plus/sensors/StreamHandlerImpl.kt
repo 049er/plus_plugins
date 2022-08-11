@@ -22,9 +22,9 @@ internal class StreamHandlerImpl(
 
         sensorEventListener = createSensorEventListener(events)
 
-        val sensorSampleRate = arguments as? Int ?: SensorManager.SENSOR_DELAY_NORMAL
+        // val sensorSampleRate = arguments as? Int ?: SensorManager.SENSOR_DELAY_FASTEST
         
-        sensorManager.registerListener(sensorEventListener, sensor, sensorSampleRate)
+        sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_FASTEST)
     }
 
     override fun onCancel(arguments: Any?) {
