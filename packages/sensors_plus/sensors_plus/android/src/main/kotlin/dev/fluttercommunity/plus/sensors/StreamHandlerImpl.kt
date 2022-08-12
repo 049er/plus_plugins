@@ -6,6 +6,7 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.EventChannel.EventSink
+import java.util.concurrent.TimeUnit;
 
 internal class StreamHandlerImpl(
         private val sensorManager: SensorManager,
@@ -21,9 +22,6 @@ internal class StreamHandlerImpl(
     override fun onListen(arguments: Any?, events: EventSink) {
 
         sensorEventListener = createSensorEventListener(events)
-
-        // val sensorSampleRate = arguments as? Int ?: SensorManager.SENSOR_DELAY_FASTEST
-        
         sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_FASTEST)
     }
 
@@ -40,7 +38,7 @@ internal class StreamHandlerImpl(
                 event.values.forEachIndexed { index, value ->
                     sensorValues[index] = value.toDouble()
                 }
-                sensorValues[event.values.size] = event.timestamp.toDouble()
+                sensorValues[event.values.size] = TimeUnit.NANOSECONDS.toMillis(event.timestamp).toDouble()
                 events.success(sensorValues)
            
             }
